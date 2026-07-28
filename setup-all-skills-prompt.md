@@ -2114,7 +2114,7 @@ else echo "ℹ️  jeopi not installed — skipping jeopi hooks wiring"; fi
 
 ### 3l — OpenSpace (skill finder / retrieval layer over the installed catalog)
 
-Step 1 installs ~174 skills into `~/.agents/skills`. OpenSpace is installed here specifically to
+Step 1 installs ~177 skills into `~/.agents/skills`. OpenSpace is installed here specifically to
 be the **skill-finder**: a host agent asks it to search, rank, and load the right `SKILL.md` out
 of that catalog instead of guessing from a flat list, and it records which skills actually worked.
 
@@ -2771,10 +2771,14 @@ If no → skip silently. Never re-ask.
 ---
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Skill Inventory (174 skills)
 =======
 Skill Inventory (152 skills)
 >>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
+=======
+Skill Inventory (177 skills)
+>>>>>>> 988fb00 (feat(game-design): add open-design game-UI skills (concept, handoff, takeover))
 
 | **Creative Media** | remotion-video-production *(compatibility alias for video-production when legacy tooling or explicit Remotion naming still expects the old skill)*, video-shotcraft *(cinematic product promo & demo video production using 106 shot recipe cards, Ink Press template, Remotion 2.5D camera moves, beat syncing, and sound design)*, paperbanana *(routing-first academic illustration — turn text/PDF into publication-quality figures via a two-phase plan-then-refine multi-agent pipeline; routes to the smallest workable mode: plot (VLM-only charts) < generate (one diagram) < batch/sweep/orchestrate, with evaluate (VLM-as-Judge) and polish; provider-agnostic, venue style packs. Plugin: `npx skills add https://github.com/akillness/jeo-skills --skill paperbanana`)* | All (`*`) |
 
