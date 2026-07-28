@@ -2079,6 +2079,7 @@ if command -v python3 &>/dev/null && python3 -c 'import sys; sys.exit(0 if sys.v
   else
     git -C "$OPENSPACE_HOME" pull --ff-only 2>&1 | tail -1
   fi
+<<<<<<< HEAD
   # A dedicated venv, exactly like graphify in 3b. `python3 -m pip install -e` against a
   # Homebrew/distro Python fails outright with PEP 668 "externally-managed-environment",
   # which is why openspace-mcp can be missing on a machine that ran this step "successfully".
@@ -2098,6 +2099,10 @@ if command -v python3 &>/dev/null && python3 -c 'import sys; sys.exit(0 if sys.v
   else
     echo "⚠️  openspace-mcp not built — inspect: $OPENSPACE_VENV/bin/python -m pip install -e $OPENSPACE_HOME"
   fi
+=======
+  python3 -m pip install -e "$OPENSPACE_HOME" 2>&1 | tail -2
+  openspace-mcp --help >/dev/null 2>&1 && echo "✅ openspace-mcp installed"
+>>>>>>> ab3c992 (feat(catalog): add 22 MengTo skills + web-design pack, make graphify CLI-first, wire OpenSpace as skill finder)
   # Host skills that give the agent the discovery + delegation tools.
   for _hs in skill-discovery delegate-task; do
     [ -d "$OPENSPACE_HOME/openspace/host_skills/$_hs" ] \
