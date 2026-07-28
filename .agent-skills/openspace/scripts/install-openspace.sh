@@ -8,8 +8,13 @@
 #   2. `pip install -e .`
 #   3. verify `openspace-mcp --help`
 #   4. copy the two host skills (skill-discovery, delegate-task) into SKILLS_ROOT
+<<<<<<< HEAD
 #   5. register the openspace MCP server into every installed runtime via
 #      register-openspace-mcp.sh, with OPENSPACE_HOST_SKILL_DIRS=SKILLS_ROOT
+=======
+#   5. print the MCP config JSON to paste into the host agent, with
+#      OPENSPACE_HOST_SKILL_DIRS pointed at SKILLS_ROOT
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
 #
 # Idempotent: re-running updates the existing clone instead of failing, and never
 # deletes user files.
@@ -18,8 +23,12 @@
 #   OPENSPACE_HOME=<dir>   - clone target (default: ${HOME}/.openspace/OpenSpace)
 #   SKILLS_ROOT=<dir>      - host skill directory to copy into and to advertise as
 #                            OPENSPACE_HOST_SKILL_DIRS (default: ${HOME}/.agents/skills)
+<<<<<<< HEAD
 #   OPENSPACE_VENV=<dir>   - venv to install into (default: ${HOME}/.agents/venvs/openspace)
 #   PYTHON_BIN=<path>      - python interpreter used to build the venv (default: python3)
+=======
+#   PYTHON_BIN=<path>      - python interpreter to use (default: python3)
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
 #   GIT_REF=<ref>          - git ref to check out after clone/fetch (default: default branch)
 #
 # Usage:
@@ -33,7 +42,10 @@ warn() { printf '\033[1;33m[openspace]\033[0m %s\n' "$*" >&2; }
 REPO_URL="https://github.com/HKUDS/OpenSpace.git"
 OPENSPACE_HOME="${OPENSPACE_HOME:-${HOME}/.openspace/OpenSpace}"
 SKILLS_ROOT="${SKILLS_ROOT:-${HOME}/.agents/skills}"
+<<<<<<< HEAD
 OPENSPACE_VENV="${OPENSPACE_VENV:-${HOME}/.agents/venvs/openspace}"
+=======
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
 PYTHON_BIN="${PYTHON_BIN:-python3}"
 DRY_RUN=0
 
@@ -46,8 +58,12 @@ Installs OpenSpace as the skill-finder layer for this jeo-skills catalog.
 Env knobs:
   OPENSPACE_HOME=<dir>   Clone target (default: \${HOME}/.openspace/OpenSpace)
   SKILLS_ROOT=<dir>      Host skill directory (default: \${HOME}/.agents/skills)
+<<<<<<< HEAD
   OPENSPACE_VENV=<dir>   Venv target (default: \${HOME}/.agents/venvs/openspace)
   PYTHON_BIN=<path>      Python interpreter used to build the venv (default: python3)
+=======
+  PYTHON_BIN=<path>      Python interpreter (default: python3)
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
   GIT_REF=<ref>          Git ref to check out after clone/fetch
 
 Options:
@@ -79,12 +95,21 @@ done
 print_plan() {
   log "Planned actions (dry-run=${DRY_RUN}):"
   echo "  1. clone/update $REPO_URL -> $OPENSPACE_HOME"
+<<<<<<< HEAD
   echo "  2. build venv $OPENSPACE_VENV and install -e $OPENSPACE_HOME into it"
   echo "  3. verify: $OPENSPACE_VENV/bin/openspace-mcp --help (symlinked into ${HOME}/.local/bin)"
   echo "  4. copy host skills into: $SKILLS_ROOT"
   echo "     - $OPENSPACE_HOME/openspace/host_skills/skill-discovery/"
   echo "     - $OPENSPACE_HOME/openspace/host_skills/delegate-task/"
   echo "  5. register openspace MCP in every installed runtime (OPENSPACE_HOST_SKILL_DIRS=$SKILLS_ROOT)"
+=======
+  echo "  2. $PYTHON_BIN -m pip install -e $OPENSPACE_HOME"
+  echo "  3. verify: openspace-mcp --help"
+  echo "  4. copy host skills into: $SKILLS_ROOT"
+  echo "     - $OPENSPACE_HOME/openspace/host_skills/skill-discovery/"
+  echo "     - $OPENSPACE_HOME/openspace/host_skills/delegate-task/"
+  echo "  5. print MCP config JSON with OPENSPACE_HOST_SKILL_DIRS=$SKILLS_ROOT"
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
 }
 
 require_git() {
@@ -122,6 +147,7 @@ clone_or_update() {
 }
 
 install_package() {
+<<<<<<< HEAD
   # A dedicated venv, exactly like setup guide Step 3l: a bare `pip install -e` against a
   # Homebrew/distro Python fails with PEP 668 "externally-managed-environment", which is
   # how openspace-mcp ends up missing on a machine that "installed successfully".
@@ -145,6 +171,19 @@ verify_install() {
   # Expose it on PATH the same way Step 3l does.
   mkdir -p "${HOME}/.local/bin" && ln -sf "$OPENSPACE_BIN" "${HOME}/.local/bin/openspace-mcp"
   log "openspace-mcp --help OK (symlinked into ${HOME}/.local/bin)"
+=======
+  log "Installing OpenSpace (pip install -e .)"
+  "$PYTHON_BIN" -m pip install -e "$OPENSPACE_HOME"
+}
+
+verify_install() {
+  log "Verifying: openspace-mcp --help"
+  if ! openspace-mcp --help >/dev/null 2>&1; then
+    echo "openspace-mcp --help failed after install" >&2
+    exit 1
+  fi
+  log "openspace-mcp --help OK"
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
 }
 
 copy_host_skills() {
@@ -168,6 +207,7 @@ copy_host_skills() {
   fi
 }
 
+<<<<<<< HEAD
 register_mcp() {
   local registrar
   registrar="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/register-openspace-mcp.sh"
@@ -188,6 +228,29 @@ print_transports() {
   cat <<EOF
 
 Transports: stdio (registered above) is simplest. For SSE, run:
+=======
+print_mcp_config() {
+  cat <<EOF
+
+Paste this into your host agent's MCP config (preserve existing servers):
+
+{
+  "mcpServers": {
+    "openspace": {
+      "command": "openspace-mcp",
+      "toolTimeout": 600,
+      "env": {
+        "OPENSPACE_HOST_SKILL_DIRS": "$SKILLS_ROOT",
+        "OPENSPACE_WORKSPACE": "$OPENSPACE_HOME",
+        "OPENSPACE_CLOUD_MODE": "live",
+        "OPENSPACE_CLOUD_API_KEY": "sk-xxx (optional, for cloud)"
+      }
+    }
+  }
+}
+
+Transports: stdio (above) is simplest. For SSE, run:
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
   openspace-mcp --transport sse --host 127.0.0.1 --port 8080   (endpoint: http://127.0.0.1:8080/sse)
 For streamable HTTP, run:
   openspace-mcp --transport streamable-http --host 127.0.0.1 --port 8081   (endpoint: http://127.0.0.1:8081/mcp)
@@ -206,8 +269,12 @@ main() {
   install_package
   verify_install
   copy_host_skills
+<<<<<<< HEAD
   register_mcp
   print_transports
+=======
+  print_mcp_config
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
   log "Done. See .agent-skills/openspace/SKILL.md for the routing guide and references/."
 }
 

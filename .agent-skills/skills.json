@@ -1,7 +1,13 @@
 {
+<<<<<<< HEAD
   "version": "1.3.0",
   "generated": "2026-07-28",
   "skill_count": 174,
+=======
+  "version": "1.2.0",
+  "generated": "2026-07-23",
+  "skill_count": 152,
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
   "categories": {
     "planning-review": [
       "agentation",
@@ -22,8 +28,12 @@
       "prompts-chat",
       "skill-standardization",
       "upskill",
+<<<<<<< HEAD
       "openspace",
       "article-prompts-to-skills"
+=======
+      "openspace"
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
     ],
     "infrastructure": [
       "deployment-automation",
@@ -139,8 +149,12 @@
       "write-a-skill",
       "x-twitter-scraper",
       "zeude",
+<<<<<<< HEAD
       "obsidian-mind",
       "stitched-full-page-capture"
+=======
+      "obsidian-mind"
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
     ],
     "frontend": [
       "astryx",
@@ -153,6 +167,7 @@
       "react-grab",
       "responsive-design",
       "state-management",
+<<<<<<< HEAD
       "web-accessibility",
       "web-design",
       "design-first-ui-prompting",
@@ -160,6 +175,9 @@
       "build-daily-inspiration-sites",
       "daily-ui-inspiration-capture",
       "optimize-web-animations"
+=======
+      "web-accessibility"
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
     ],
     "creative-media": [
       "drawio",
@@ -168,7 +186,6 @@
       "paperbanana",
       "remotion-video-production",
       "slides-grab",
-      "video-production",
       "video-shotcraft",
       "vox-director",
       "webtoon-harness",
@@ -202,8 +219,12 @@
       "perfectpixel",
       "steam-store-launch-ops",
       "unity-gamedev-skill-pack",
+<<<<<<< HEAD
       "web-game-development",
       "implement-fog-of-war"
+=======
+      "web-game-development"
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
     ]
   },
   "skills": [
@@ -3286,7 +3307,11 @@
     },
     {
       "name": "openspace",
+<<<<<<< HEAD
       "description": "Install and route through OpenSpace, the skill management layer for AI agents, so a host agent can retrieve/rank/load the right SKILL.md out of this jeo-skills catalog (~150 installed skills), then evaluate skill quality from real execution evidence and evolve skills via FIX/DERIVED/CAPTURED updates. Covers install-as-skill-finder, retrieve-a-skill, evaluate-quality, evolve-skills, and local-first hub share/import. Triggers on: openspace, skill finder, skill retrieval, find the right skill, rank skills, skill discovery, skill quality, evolve skill, FIX DERIVED CAPTURED, skill hub, openspace-mcp, DiscoverSkills, skill-discovery, delegate-task.",
+=======
+      "description": "Install and route through OpenSpace, the skill management layer for AI agents, so a host agent can retrieve/rank/load the right SKILL.md out of this jeo-skills catalog (~150 installed skills), then evaluate skill quality from real execution evidence and evolve skills via FIX/DERIVED/CAPTURED updates. Covers install-as-skill-finder, retrieve-a-skill, evaluate-quality, evolve-skills, and local-first hub share/import. Triggers on: openspace, skill finder, skill retrieval, find the right skill, rank skills, skill discovery, skill quality, evolve skill, FIX DERIVED CAPTURED, skill hub, openspace-mcp, search_skills, skill-discovery, delegate-task.",
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
       "category": "agent-development",
       "path": "openspace/SKILL.md",
       "tags": [
@@ -4995,6 +5020,7 @@
       "version": "2.1.0"
     },
     {
+<<<<<<< HEAD
       "name": "video-production",
       "description": "Plan and route programmable or automated video production across code-first, template-first, and hybrid content pipelines. Use when the user needs repeatable video generation, branded short-form content, personalized videos, social clip batches, captioned/localized variants, video APIs, or video creation from data and templates — even if they only say video production. Triggers on: Remotion, programmatic video, automated video creation, video API, personalized video, batch-create shorts, render videos from code, repurpose content into clips.",
       "category": "creative-media",
@@ -5025,6 +5051,8 @@
       "version": "2.0"
     },
     {
+=======
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
       "name": "video-shotcraft",
       "description": "用镜头配方卡 + 已验收模板 + 代码/音频资产制作电影感产品视频（Remotion + 真实页面截图 + 2.5D 运镜 + 节奏卡点 + 声音设计）。 Use when making a cinematic product promo or desktop demo video, naming the Ink Press template, reproducing template video effects, or building single motion-design shots with recipe cards. Triggers on: video-shotcraft, Ink Press template, product video, cinematic promo, shot recipe card, remotion video.",
       "category": "creative-media",
@@ -5130,6 +5158,7 @@
       "version": "2.1.0"
     },
     {
+<<<<<<< HEAD
       "name": "web-design",
       "description": "Route web design, motion, WebGL, and visual-styling requests into the narrowest matching sub-skill of the 79-skill MengTo/Skills web-design family — Style/Design-System Packs, Full-Site Quality & Direction, Motion & Scroll Systems, WebGL/3D Backgrounds & Shaders, Library Embeds & Integrations, Component & State Effects, and CSS Technique Primitives. Use when picking and fetching the right visual recipe for a marketing site, landing page, portfolio, or dashboard shell, then combining layers in direction → layout → background → motion → component-state → polish order. Triggers on: web design, landing page, awwwards, GSAP, Lenis, scroll animation, WebGL background, shader, glass UI, dark mode design system, editorial layout, cursor trail, progressive blur, gradient border, three.js background, vanta, globe.gl, unicorn studio, marketing site polish.",
       "category": "frontend",
@@ -5142,6 +5171,17 @@
         "threejs",
         "css",
         "landing-page",
+=======
+      "name": "web-game-development",
+      "description": "Route Three.js and browser game-development requests into the narrowest matching sub-skill of the 19-skill MengTo/Skills game-development family — level authoring, map editing, cameras, enemy systems and AI, monster rigs, action combat, encounter design, inventory, hybrid/Vesperfall assets, VFX, audio feedback, mobile controls, performance tuning, QA, changelogs, and release. Use when a task touches any of those for a playable web game, and fetch the matching sub-skill before doing the work instead of improvising. Route Unity/C# engine work to `unity-gamedev-skill-pack` instead. Triggers on: three.js game, browser game, webgl game, isometric arpg, enemy AI, game camera, game inventory, game VFX, game audio feedback, ship web game, playtest web game, mobile threejs game, game encounter design, monster rig, hybrid game assets.",
+      "category": "game-development",
+      "path": "web-game-development/SKILL.md",
+      "tags": [
+        "game-development",
+        "three.js",
+        "webgl",
+        "browser-games",
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
         "skill-routing",
         "skill-pack",
         "mengto-skills"
@@ -5153,6 +5193,7 @@
         "Write",
         "Edit",
         "Glob",
+<<<<<<< HEAD
         "Grep",
         "WebFetch"
       ],
@@ -5182,6 +5223,10 @@
         "Glob",
         "Grep"
       ],
+=======
+        "Grep"
+      ],
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
       "keyword": "web-game-development",
       "version": "1.0"
     },

@@ -450,7 +450,11 @@ run_guide() {
   mkdir -p "$guide_home/workdir"
   HOME="$guide_home" _HOME="$guide_home" PATH="$GUIDE_PATH" PLATFORM=macos \
     SKILLS_ROOT="$guide_home/.agents/skills" OOO_GIT_INTERVIEW=0 OOO_SPEC_KIT=0 OOO_CLI_ANYTHING=0 \
+<<<<<<< HEAD
     /bin/bash -c 'cd "$1" && exec /bin/bash "$2"' bash "$guide_home/workdir" "$GUIDE_DIR/$section" >"$LAST_OUTPUT" 2>&1
+=======
+    /bin/bash "$GUIDE_DIR/$section" >"$LAST_OUTPUT" 2>&1
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
   LAST_STATUS=$?
 }
 

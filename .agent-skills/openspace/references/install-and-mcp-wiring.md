@@ -7,15 +7,19 @@ Path B, and the host-skills/env-var sections).
 
 - Python **3.12+**
 - `openspace-mcp --help` must succeed after install (this is the verification gate)
+<<<<<<< HEAD
 - Install into a **dedicated venv** (`~/.agents/venvs/openspace`): a bare
   `pip install -e .` against a Homebrew or distro Python fails with PEP 668
   `externally-managed-environment`, which is how `openspace-mcp` ends up missing on a
   machine that reported a successful install
+=======
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
 - Node.js **≥ 20** only if you also want the local dashboard (`apps/dashboard`)
 
 ## Quick Start (Path A: for your agent)
 
 ```bash
+<<<<<<< HEAD
 git clone --filter=blob:none --sparse https://github.com/HKUDS/OpenSpace.git ~/.openspace/OpenSpace
 cd ~/.openspace/OpenSpace
 git sparse-checkout set --no-cone '/*' '!/assets/'   # skips the ~50 MB assets/ folder
@@ -64,6 +68,27 @@ PATH; resolution order is `$OPENSPACE_VENV/bin/openspace-mcp` (default
 `~/.agents/venvs/openspace`), `~/.local/bin/openspace-mcp`, PATH, then the legacy
 `~/.openspace/venv/bin/openspace-mcp`. Env knobs: `SKILLS_ROOT`, `OPENSPACE_HOME`,
 `OPENSPACE_VENV`, `OPENSPACE_BIN`, `OPENSPACE_CLOUD_MODE`, `OPENSPACE_CLOUD_API_KEY`.
+=======
+git clone https://github.com/HKUDS/OpenSpace.git && cd OpenSpace
+pip install -e .
+openspace-mcp --help  # verify installation
+```
+
+Lightweight clone that skips the ~50 MB `assets/` folder:
+
+```bash
+git clone --filter=blob:none --sparse https://github.com/HKUDS/OpenSpace.git
+cd OpenSpace
+git sparse-checkout set --no-cone '/*' '!/assets/'
+pip install -e .
+```
+
+If `openspace-mcp --help` is unavailable, install with an explicit interpreter:
+
+```bash
+python -m pip install -e .
+```
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
 
 ## MCP server config
 
@@ -73,11 +98,19 @@ Add an MCP server named `openspace`. Prefer stdio for local use.
 {
   "mcpServers": {
     "openspace": {
+<<<<<<< HEAD
       "command": "$HOME/.agents/venvs/openspace/bin/openspace-mcp",
       "toolTimeout": 600,
       "env": {
         "OPENSPACE_HOST_SKILL_DIRS": "/path/to/your/agent/skills",
         "OPENSPACE_WORKSPACE": "$HOME/.openspace/OpenSpace",
+=======
+      "command": "openspace-mcp",
+      "toolTimeout": 600,
+      "env": {
+        "OPENSPACE_HOST_SKILL_DIRS": "/path/to/your/agent/skills",
+        "OPENSPACE_WORKSPACE": "/path/to/OpenSpace",
+>>>>>>> 108fbaa (feat(catalog): sync docs to 152 skills — drop 16, add 3, retire platform-exclusive install path)
         "OPENSPACE_CLOUD_MODE": "live",
         "OPENSPACE_CLOUD_API_KEY": "sk-xxx (optional, for cloud)"
       }
