@@ -13,6 +13,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+<<<<<<< HEAD
       - run: pip install pyyaml
       # CI validates, it never rewrites the catalog. The previous steps ran
       # fix_frontmatter.py and flatten_skills.py in mutating mode: both edited the
@@ -25,3 +26,15 @@ jobs:
         run: python3 scripts/repair-skill-frontmatter.py --check
       - name: Skill tree stays flat (no rewrite)
         run: python3 flatten_skills.py --dry-run
+=======
+      - run: python fix_frontmatter.py
+      - run: python flatten_skills.py
+
+# --- A0-c' frontmatter exception ledger pin (program-scoped, REMOVED AT D4) ---
+# The ledger's own sha256 is recorded HERE, outside the ledger file: a ledger
+# that carries its own expected hash can be re-signed by whatever rewrote it,
+# which defeats G11c. ci.yml is a review-required surface, so amending it is
+# visible. Changing the ledger and this constant in one commit requires the
+# trailer `Frontmatter-Exception-Ledger-Amendment:` plus an architect signature.
+#   A0-c__recorded_hash: 306f4ac2b0f04a63b74d0a578e6f8afac46f4a2b2e0304661b9e75d9a1d22220
+>>>>>>> f32cf31 (feat(gate0): A0 baseline, exception ledger, link census, and the rule F / D-3 validators)
