@@ -2177,22 +2177,43 @@ agent runtimes should all see it. Step 1 installs the registrar with the `opensp
 echo "=== Registering OpenSpace MCP across installed runtimes ==="
 _HOME="${_HOME:-${USERPROFILE:-$HOME}}"
 SKILLS_ROOT="${SKILLS_ROOT:-$_HOME/.agents/skills}"
+<<<<<<< HEAD
+=======
+OPENSPACE_VENV="${OPENSPACE_VENV:-$_HOME/.agents/venvs/openspace}"
+>>>>>>> 598021c (feat(openspace): register the skill-finder MCP across every installed runtime)
 REGISTRAR="$SKILLS_ROOT/openspace/scripts/register-openspace-mcp.sh"
 
 if [ ! -f "$REGISTRAR" ]; then
   echo "ℹ️  $REGISTRAR missing — re-run Step 1 to install the openspace skill"
+<<<<<<< HEAD
 elif ! command -v openspace-mcp >/dev/null 2>&1 && [ ! -x "$_HOME/.openspace/venv/bin/openspace-mcp" ]; then
   echo "ℹ️  openspace-mcp not installed (Python 3.12+ required) — skipping MCP registration"
 else
   SKILLS_ROOT="$SKILLS_ROOT" OPENSPACE_HOME="${OPENSPACE_HOME:-$_HOME/.openspace/OpenSpace}" \
+=======
+elif [ ! -x "$OPENSPACE_VENV/bin/openspace-mcp" ] && ! command -v openspace-mcp >/dev/null 2>&1; then
+  echo "ℹ️  openspace-mcp not built (Python 3.12+ required) — skipping MCP registration"
+else
+  SKILLS_ROOT="$SKILLS_ROOT" OPENSPACE_VENV="$OPENSPACE_VENV" \
+    OPENSPACE_HOME="${OPENSPACE_HOME:-$_HOME/.openspace/OpenSpace}" \
+>>>>>>> 598021c (feat(openspace): register the skill-finder MCP across every installed runtime)
     bash "$REGISTRAR"
 fi
 ```
 
+<<<<<<< HEAD
 The registrar merges in place: existing files keep their mode and are replaced atomically,
 symlinks and non-regular configs are refused, an existing `openspace` entry is left alone
 (pass `--force` to overwrite), and a runtime whose config directory does not exist is skipped
 instead of being invented. Preview with `bash "$REGISTRAR" --dry-run`.
+=======
+The registrar writes the venv binary's absolute path, so registration does not depend on
+`~/.local/bin` being on the agent's PATH. It merges in place: existing configs keep their mode
+and are replaced atomically, symlinks and non-regular files are refused, other MCP servers are
+preserved, an existing `openspace` entry is left alone (pass `--force` to overwrite), and a
+runtime whose config directory does not exist is skipped instead of being invented. Preview with
+`bash "$REGISTRAR" --dry-run`.
+>>>>>>> 598021c (feat(openspace): register the skill-finder MCP across every installed runtime)
 
 | Runtime | Config written | Format |
 |---------|----------------|--------|
